@@ -34,9 +34,8 @@ interface ConversationProps {
 }
 
 export default function Conversation({ domains }: ConversationProps) {
-  const { sendMessage, isConnected, error, data } = useWebsocket(
-    `${process.env.NEXT_PUBLIC_WS_SERVER}`
-  );
+  const { sendMessage, isConnected, error, data } =
+    useWebsocket(`ws://localhost:8000`);
   const [mainTab, setMainTab] = useState<string>("unread");
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const [realTime, setRealTime] = useState(false);
@@ -76,7 +75,7 @@ export default function Conversation({ domains }: ConversationProps) {
     if (data.type === "ADD_CHAT") {
       setChatMessages([...chatMessages, data.payload]);
     }
-  }, [data, chatMessages, chatRooms, setChatRooms, setChatMessages]);
+  }, [data]);
 
   function submitHandler(e: FormEvent) {
     e.preventDefault();

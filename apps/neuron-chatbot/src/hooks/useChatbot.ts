@@ -9,6 +9,7 @@ import { useRecoilState } from "recoil";
 import { chatRoomAtom, isRealTimeAtom, store, useChatRoom } from "@repo/store";
 import useWebsocket from "./useWebSocket";
 import { v4 as uuidv4 } from "uuid";
+import { ChatRoom } from "@prisma/client";
 import { useAtom } from "jotai";
 
 type name = string;
@@ -60,7 +61,7 @@ export default function useChatBot() {
   const { chatRooms, setChatRooms } = useChatRoom();
 
   const { sendMessage, isConnected, error, data } = useWebsocket(
-    `${process.env.NEXT_PUBLIC_WS_SERVER}`
+    "ws://localhost:8000"
   );
 
   async function getDomainChatbot(id: string) {
@@ -99,7 +100,7 @@ export default function useChatBot() {
 
     if (res?.status === 201) {
       // setChatRooms([...chatRooms, res.chatRoom as ChatRoom]);
-      console.log([...chatRooms, res?.chatRoom as any]);
+      console.log([...chatRooms, res?.chatRoom as ChatRoom]);
 
       sendMessage({
         type: "JOIN_ROOM",
@@ -157,7 +158,7 @@ export default function useChatBot() {
 
       handleRoom();
     }
-  }, [isRealTime, isConnected, handleRoom, sendMessage, setIsRealTime]);
+  }, [isRealTime, isConnected]);
 
   useEffect(() => {
     if (data === null) return;
