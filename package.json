@@ -4,7 +4,7 @@
   "scripts": {
     "build": "cd packages/db && npm run prisma:generate && npm run prisma:migrate && turbo build",
     "dev": "turbo dev",
-    "websocket": "cd apps/websocket-server && npm run build && npm run start",
+    "ws": "cd apps/websocket-server && npm run build && npm run start",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "postinstall": "cd packages/db && npm run prisma:generate && mkdir -p node_modules && cp -R ../../node_modules/.prisma node_modules/.prisma"
