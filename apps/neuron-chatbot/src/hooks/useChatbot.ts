@@ -9,7 +9,6 @@ import { useRecoilState } from "recoil";
 import { chatRoomAtom, isRealTimeAtom, store, useChatRoom } from "@repo/store";
 import useWebsocket from "./useWebSocket";
 import { v4 as uuidv4 } from "uuid";
-import { ChatRoom } from "@prisma/client";
 import { useAtom } from "jotai";
 
 type name = string;
@@ -100,7 +99,7 @@ export default function useChatBot() {
 
     if (res?.status === 201) {
       // setChatRooms([...chatRooms, res.chatRoom as ChatRoom]);
-      console.log([...chatRooms, res?.chatRoom as ChatRoom]);
+      console.log([...chatRooms, res?.chatRoom as any]);
 
       sendMessage({
         type: "JOIN_ROOM",

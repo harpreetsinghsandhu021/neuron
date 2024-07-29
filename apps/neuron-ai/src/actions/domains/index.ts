@@ -3,7 +3,6 @@
 import { z } from "zod";
 import { currentUser } from "@clerk/nextjs/server";
 import { DomainType } from "./types";
-import { PrismaClientUnknownRequestError } from "@prisma/client/runtime/library";
 import prisma from "@repo/db/client";
 
 export async function createDomain(values: DomainType) {
