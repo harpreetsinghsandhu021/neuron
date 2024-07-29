@@ -149,17 +149,9 @@ const MyComponent: React.FC = () => {
             width={300}
             height={500}
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/611c2452ae673d0d612e78eacdda95261c17cf74debd73e1bd710f1b3e642bce?apiKey=1d6ea0e9cb024b58b6d3b2fddd0c29ce&"
+            src="/images/logo.svg"
             alt=""
             className="shrink-0 aspect-[1.25] fill-white w-[41px]"
-          />
-          <Image
-            width={300}
-            height={500}
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/6ebf4ed8bb09f0aaeb85e54379666beec1df455a842bec67487e2037741d33a8?apiKey=1d6ea0e9cb024b58b6d3b2fddd0c29ce&"
-            alt=""
-            className="shrink-0 aspect-[2.63] fill-white w-[82px]"
           />
         </div>
         <nav className="flex gap-5 justify-between text-sm">
@@ -193,7 +185,7 @@ const MyComponent: React.FC = () => {
             </p>
             <div className="flex justify-start">
               <a
-                href="#"
+                href="/dashboard/overview"
                 className=" justify-center px-7 py-3 mt-10 text-sm leading-5 text-white rounded-md bg-[linear-gradient(93deg,#FF9898_0.48%,#8054FF_100%)] max-md:px-5"
               >
                 Go To Dashboard

@@ -60,7 +60,7 @@ export function FeaturesSection() {
   ];
   return (
     <>
-      <div className="px-8 py-20">
+      <div className="px-8 mt-20 py-20">
         <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
           Packed with thousands of features
         </h4>

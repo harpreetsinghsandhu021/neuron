@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: "ucarecdn.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.builder.io",
+        port: "",
+      },
     ],
   },
 };

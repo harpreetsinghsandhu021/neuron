@@ -89,25 +89,14 @@ export default function SidebarComponent() {
       collapsed={false}
       aria-label="Sidebar with call to action button example"
     >
-      {mode === "dark" ? (
-        <Sidebar.Logo
-          href="#"
-          img="/images/logo.svg"
-          className="w-8 h-8 select-none"
-          imgAlt="Flowbite logo"
-        >
-          Neuron
-        </Sidebar.Logo>
-      ) : (
-        <Sidebar.Logo
-          href="#"
-          img="/images/logo-dark.svg"
-          className="w-8 h-8 select-none"
-          imgAlt="Flowbite logo"
-        >
-          Neuron
-        </Sidebar.Logo>
-      )}
+      <Sidebar.Logo
+        href="#"
+        img="/images/logo.svg"
+        className="w-8 h-8 select-none mix-blend-difference"
+        imgAlt="Flowbite logo"
+      >
+        <p className="text-2xl mix-blend-screen"> Neuron</p>
+      </Sidebar.Logo>
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Sidebar.Item
