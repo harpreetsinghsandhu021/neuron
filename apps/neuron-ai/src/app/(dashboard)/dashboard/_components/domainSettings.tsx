@@ -111,14 +111,14 @@ function CodeBlock({ id }: { id: number | undefined }) {
         }
     \`)
     
-    iframe.src = "http://localhost:3001"
+    iframe.src = "${process.env.NEXT_PUBLIC_CHATBOT_URL}"
     iframe.classList.add('chat-frame')
     document.body.appendChild(iframe)
 
     iframe.onload = () => {
       setTimeout(() => {
         try {
-          iframe.contentWindow.postMessage(${id}, "http://localhost:3001");
+          iframe.contentWindow.postMessage(${id}, "${process.env.NEXT_PUBLIC_CHATBOT_URL}");
         } catch (err) {
           console.error("Error sending postMessage:", err);
         }
@@ -130,7 +130,7 @@ function CodeBlock({ id }: { id: number | undefined }) {
         let dimensions = JSON.parse(e.data)
         iframe.width = dimensions.width
         iframe.height = dimensions.height
-        iframe.contentWindow.postMessage("${id}", "http://localhost:3001/")
+        iframe.contentWindow.postMessage("${id}", "${process.env.NEXT_PUBLIC_CHATBOT_URL}")
     })
         `;
   return (
