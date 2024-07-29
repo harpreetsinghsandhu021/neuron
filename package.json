@@ -6,7 +6,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "postinstall": "turbo run prisma:generate"
+    "postinstall": "cd packages/db && npm run prisma:generate"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
