@@ -60,7 +60,7 @@ export default function useChatBot() {
   const { chatRooms, setChatRooms } = useChatRoom();
 
   const { sendMessage, isConnected, error, data } = useWebsocket(
-    "ws://localhost:8000"
+    `${process.env.NEXT_PUBLIC_WS_SERVER}`
   );
 
   async function getDomainChatbot(id: string) {

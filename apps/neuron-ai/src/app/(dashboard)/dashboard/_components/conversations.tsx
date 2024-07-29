@@ -35,7 +35,7 @@ interface ConversationProps {
 
 export default function Conversation({ domains }: ConversationProps) {
   const { sendMessage, isConnected, error, data } = useWebsocket(
-    "ws://localhost:8000"
+    `${process.env.NEXT_PUBLIC_WS_SERVER}`
   );
   const [mainTab, setMainTab] = useState<string>("unread");
   const [activeTab, setActiveTab] = useState<string | null>(null);
