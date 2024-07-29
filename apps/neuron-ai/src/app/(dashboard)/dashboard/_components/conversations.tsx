@@ -26,7 +26,6 @@ import { useUser } from "@clerk/nextjs";
 import { useAtom } from "jotai";
 import { chatRoomAtom, store, useChatMessages, useChatRoom } from "@repo/store";
 import { Toggle } from "@/components/ui/toggle";
-import { ChatMessage, ChatRoom } from "@prisma/client";
 import { getChatRoomMessages } from "@/actions/chatMessage";
 import { useRouter } from "next13-progressbar";
 
@@ -104,7 +103,7 @@ export default function Conversation({ domains }: ConversationProps) {
     if (res?.status === 200) {
       console.log(res);
 
-      setChatRooms(res?.rooms as ChatRoom[]);
+      setChatRooms(res?.rooms as chatRoomType[]);
     }
   }
 
@@ -169,9 +168,7 @@ export default function Conversation({ domains }: ConversationProps) {
                       if (fetchMessages?.status === 200) {
                         console.log(fetchMessages);
 
-                        setChatMessages(
-                          fetchMessages.messages as ChatMessage[]
-                        );
+                        setChatMessages(fetchMessages.messages as any[]);
                       }
                       setIsLoadingMessages(false);
 
@@ -249,9 +246,7 @@ export default function Conversation({ domains }: ConversationProps) {
                       if (fetchMessages?.status === 200) {
                         console.log(fetchMessages);
 
-                        setChatMessages(
-                          fetchMessages.messages as ChatMessage[]
-                        );
+                        setChatMessages(fetchMessages.messages as any[]);
                       }
                       setIsLoadingMessages(false);
                     }}
