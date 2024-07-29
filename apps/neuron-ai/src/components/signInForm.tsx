@@ -48,7 +48,7 @@ export default function SignInForm({
         <h2 className="font-bold text-xl text-white">Welcome to Neuron</h2>
         <p className="text-gray-300 text-sm max-w-sm mt-2 ">
           Log in to Neuron - If you can figure out our non-existent login flow,
-          you're a genius!
+          you&apos;re a genius!
         </p>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="my-5 ">

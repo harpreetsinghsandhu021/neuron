@@ -26,7 +26,7 @@ export const TextGenerateEffect = ({
         delay: stagger(0.1),
       }
     );
-  }, [scope.current, animate]);
+  }, [animate]);
 
   // Memoize renderWords function to avoid unnecessary re-rendering
   const renderWords = useMemo(() => {

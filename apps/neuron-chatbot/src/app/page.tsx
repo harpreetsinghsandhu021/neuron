@@ -50,7 +50,7 @@ export default function Home() {
   );
 }
 
-export const BotIcon = () => {
+const BotIcon = () => {
   return (
     <Image
       alt=""

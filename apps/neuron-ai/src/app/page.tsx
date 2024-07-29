@@ -17,7 +17,9 @@ const FeatureBox: React.FC<FeatureBoxProps> = ({
   description,
 }) => (
   <div className="flex flex-col grow items-center px-9 py-12 w-full text-center rounded-3xl bg-zinc-900 max-md:px-5 max-md:mt-8">
-    <img
+    <Image
+      width={300}
+      height={500}
       loading="lazy"
       src={imageSrc}
       alt={title}
@@ -39,7 +41,9 @@ type CompanyLogoProps = {
 
 const CompanyLogo: React.FC<CompanyLogoProps> = ({ imageSrc, altText }) => (
   <div className="flex flex-1 justify-center items-center px-7 py-7 bg-black rounded-xl max-md:px-5">
-    <img
+    <Image
+      width={300}
+      height={500}
       loading="lazy"
       src={imageSrc}
       alt={altText}
@@ -141,13 +145,17 @@ const MyComponent: React.FC = () => {
     <div className="flex bg-black flex-col items-center px-5">
       <header className="flex gap-5 py-10 justify-between w-full max-w-screen-xl  max-md:flex-wrap">
         <div className="flex gap-2.5 items-start my-auto">
-          <img
+          <Image
+            width={300}
+            height={500}
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/611c2452ae673d0d612e78eacdda95261c17cf74debd73e1bd710f1b3e642bce?apiKey=1d6ea0e9cb024b58b6d3b2fddd0c29ce&"
             alt=""
             className="shrink-0 aspect-[1.25] fill-white w-[41px]"
           />
-          <img
+          <Image
+            width={300}
+            height={500}
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/6ebf4ed8bb09f0aaeb85e54379666beec1df455a842bec67487e2037741d33a8?apiKey=1d6ea0e9cb024b58b6d3b2fddd0c29ce&"
             alt=""
@@ -217,7 +225,9 @@ const MyComponent: React.FC = () => {
             <div className="flex flex-col w-3/5 max-md:ml-0 max-md:w-full">
               <div className="flex flex-col justify-center px-16 py-20 rounded-full border border-solid border-neutral-800 max-md:px-5 max-md:mt-6 max-md:max-w-full">
                 <div className="flex flex-col px-16 pt-16 pb-11 mx-6 mt-1 rounded-full border border-solid border-neutral-800 max-md:px-5 max-md:mr-2.5 max-md:max-w-full">
-                  <img
+                  <Image
+                    width={300}
+                    height={500}
                     loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/d0ad8de7f59f3e5706f88c9cb7004fc5bd3ddf62aac1b2901ed549b1b94015ee?apiKey=1d6ea0e9cb024b58b6d3b2fddd0c29ce&"
                     alt="Decorative circular image"
@@ -229,7 +239,7 @@ const MyComponent: React.FC = () => {
             <div className="flex flex-col ml-5 w-2/5 max-md:ml-0 max-md:w-full">
               <div className="flex flex-col self-stretch my-auto text-white max-md:mt-10 max-md:max-w-full">
                 <h2 className="text-5xl font-semibold leading-[64px] max-md:max-w-full max-md:text-4xl max-md:leading-[60px]">
-                  We're here to guide and help you at all times
+                  We&apos;re here to guide and help you at all times
                 </h2>
                 <p className="mt-8 text-lg leading-7 text-neutral-400 max-md:mr-2.5 max-md:max-w-full">
                   A good design is not only aesthetically pleasing, but also

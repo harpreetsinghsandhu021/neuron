@@ -33,7 +33,10 @@ import { createfilterQuestion } from "@/actions/botQuestions";
 interface BotTrainingProps {
   helpDesk: helpDeskType[] | null | undefined;
   id: number | undefined;
-  filteredQuestions: filterQuestionType[] | null | undefined;
+  filteredQuestions:
+    | { question: string; answer: string | null }[]
+    | null
+    | undefined;
 }
 
 const BotTraining = ({ id, helpDesk, filteredQuestions }: BotTrainingProps) => {
@@ -149,8 +152,8 @@ const BotTraining = ({ id, helpDesk, filteredQuestions }: BotTrainingProps) => {
               <CardTitle>Preview</CardTitle>
             </CardHeader>
             <CardContent className="max-h-96 overflow-scroll">
-              {helpDesk?.map((h) => (
-                <FAQ question={h.question} answer={h.answer} />
+              {helpDesk?.map((h, i) => (
+                <FAQ key={i} question={h.question} answer={h.answer} />
               ))}
             </CardContent>
           </Card>
@@ -222,8 +225,12 @@ const BotTraining = ({ id, helpDesk, filteredQuestions }: BotTrainingProps) => {
             <CardHeader>
               <CardTitle>Previous Questions</CardTitle>
               <CardContent className="max-h-96 overflow-scroll">
-                {filteredQuestions?.map((h) => (
-                  <FAQ question={h.question} answer={h.answer as string} />
+                {filteredQuestions?.map((h, i) => (
+                  <FAQ
+                    key={i}
+                    question={h.question}
+                    answer={h.answer as string}
+                  />
                 ))}
               </CardContent>
             </CardHeader>

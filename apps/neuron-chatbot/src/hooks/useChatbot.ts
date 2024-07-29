@@ -158,7 +158,7 @@ export default function useChatBot() {
 
       handleRoom();
     }
-  }, [isRealTime, isConnected]);
+  }, [isRealTime, isConnected, handleRoom, sendMessage, setIsRealTime]);
 
   useEffect(() => {
     if (data === null) return;

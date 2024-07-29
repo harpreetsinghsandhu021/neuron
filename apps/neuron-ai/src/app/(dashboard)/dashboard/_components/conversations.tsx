@@ -66,7 +66,7 @@ export default function Conversation({ domains }: ConversationProps) {
     console.log(activeTab, mainTab);
 
     getChatRooms();
-  }, [activeTab]);
+  }, [activeTab, mainTab]);
 
   useEffect(() => {
     console.log(data);
@@ -77,7 +77,7 @@ export default function Conversation({ domains }: ConversationProps) {
     if (data.type === "ADD_CHAT") {
       setChatMessages([...chatMessages, data.payload]);
     }
-  }, [data]);
+  }, [data, chatMessages, chatRooms, setChatRooms, setChatMessages]);
 
   function submitHandler(e: FormEvent) {
     e.preventDefault();

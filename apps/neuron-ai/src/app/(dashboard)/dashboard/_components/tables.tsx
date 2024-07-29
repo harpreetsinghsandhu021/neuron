@@ -295,7 +295,8 @@ export default function ProductsTable({
             <DialogHeader>
               <DialogTitle>Add New Product</DialogTitle>
               <DialogDescription>
-                Add Products to your domain here. Click save when you're done.
+                Add Products to your domain here. Click save when you&apos;re
+                done.
               </DialogDescription>
             </DialogHeader>
             <div className="grid gap-4 py-4">
@@ -367,7 +368,9 @@ export default function ProductsTable({
                                 const file = e.target.files![0];
 
                                 setIsUploading(true);
-                                const uploaded = await upload.uploadFile(file);
+                                const uploaded = await upload.uploadFile(
+                                  file as File
+                                );
 
                                 setIsUploading(false);
                                 form.setValue("image", uploaded.uuid);

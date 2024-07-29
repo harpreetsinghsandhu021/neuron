@@ -27,7 +27,7 @@ interface DomainSettingsProps {
     | undefined;
   chatbot: (ChatbotType & { id: number }) | null | undefined;
   helpDesk: helpDeskType[] | null | undefined;
-  filteredQuestions: filterQuestionType[] | null | undefined;
+  filteredQuestions: { question: string; answer: string | null }[] | undefined;
   products: productType[] | undefined;
 }
 

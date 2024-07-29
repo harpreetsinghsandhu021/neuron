@@ -47,15 +47,15 @@ const CampaignHandler = () => {
               Introducing Our New AI Chatbot: Your Personal Assistant!
             </CardTitle>
             <CardDescription className="truncate text-ellipsis line-clamp-3 overflow-hidden">
-              Hi [Recipient's Name], We are thrilled to announce the launch of
-              our latest product, the AI Chatbot! Designed to streamline your
-              tasks and enhance productivity, our AI Chatbot is your personal
-              assistant, available 24/7. Key Features: 24/7 Availability: Never
-              miss a task with real-time assistance. Intelligent Responses:
-              Understands and responds to your queries accurately. Seamless
-              Integration: Easily integrates with your favorite tools. Don't
-              miss out on experiencing the future of personal assistance. Click
-              here to get started with our AI Chatbot today! Best regards,
+              Hi Subash, We are thrilled to announce the launch of our latest
+              product, the AI Chatbot! Designed to streamline your tasks and
+              enhance productivity, our AI Chatbot is your personal assistant,
+              available 24/7. Key Features: 24/7 Availability: Never miss a task
+              with real-time assistance. Intelligent Responses: Understands and
+              responds to your queries accurately. Seamless Integration: Easily
+              integrates with your favorite tools. Don&apos;t miss out on
+              experiencing the future of personal assistance. Click here to get
+              started with our AI Chatbot today! Best regards,
             </CardDescription>
           </CardHeader>
           <CardFooter className="flex gap-4">
@@ -67,8 +67,8 @@ const CampaignHandler = () => {
                 <DialogHeader>
                   <DialogTitle>Edit profile</DialogTitle>
                   <DialogDescription>
-                    Make changes to your profile here. Click save when you're
-                    done.
+                    Make changes to your profile here. Click save when
+                    you&apos;re done.
                   </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
@@ -115,15 +115,15 @@ const CampaignHandler = () => {
               Introducing Our New AI Chatbot: Your Personal Assistant!
             </CardTitle>
             <CardDescription className="truncate text-ellipsis line-clamp-3 overflow-hidden">
-              Hi [Recipient's Name], We are thrilled to announce the launch of
-              our latest product, the AI Chatbot! Designed to streamline your
-              tasks and enhance productivity, our AI Chatbot is your personal
-              assistant, available 24/7. Key Features: 24/7 Availability: Never
-              miss a task with real-time assistance. Intelligent Responses:
-              Understands and responds to your queries accurately. Seamless
-              Integration: Easily integrates with your favorite tools. Don't
-              miss out on experiencing the future of personal assistance. Click
-              here to get started with our AI Chatbot today! Best regards,
+              Hi Subash, We are thrilled to announce the launch of our latest
+              product, the AI Chatbot! Designed to streamline your tasks and
+              enhance productivity, our AI Chatbot is your personal assistant,
+              available 24/7. Key Features: 24/7 Availability: Never miss a task
+              with real-time assistance. Intelligent Responses: Understands and
+              responds to your queries accurately. Seamless Integration: Easily
+              integrates with your favorite tools. Don&apos;t miss out on
+              experiencing the future of personal assistance. Click here to get
+              started with our AI Chatbot today! Best regards,
             </CardDescription>
           </CardHeader>
           <CardFooter className="flex gap-4">
@@ -145,15 +145,15 @@ const CampaignHandler = () => {
               Introducing Our New AI Chatbot: Your Personal Assistant!
             </CardTitle>
             <CardDescription className="truncate text-ellipsis line-clamp-3 overflow-hidden">
-              Hi [Recipient's Name], We are thrilled to announce the launch of
-              our latest product, the AI Chatbot! Designed to streamline your
-              tasks and enhance productivity, our AI Chatbot is your personal
-              assistant, available 24/7. Key Features: 24/7 Availability: Never
-              miss a task with real-time assistance. Intelligent Responses:
-              Understands and responds to your queries accurately. Seamless
-              Integration: Easily integrates with your favorite tools. Don't
-              miss out on experiencing the future of personal assistance. Click
-              here to get started with our AI Chatbot today! Best regards,
+              Hi Subash, We are thrilled to announce the launch of our latest
+              product, the AI Chatbot! Designed to streamline your tasks and
+              enhance productivity, our AI Chatbot is your personal assistant,
+              available 24/7. Key Features: 24/7 Availability: Never miss a task
+              with real-time assistance. Intelligent Responses: Understands and
+              responds to your queries accurately. Seamless Integration: Easily
+              integrates with your favorite tools. Don&apos;t miss out on
+              experiencing the future of personal assistance. Click here to get
+              started with our AI Chatbot today! Best regards,
             </CardDescription>
           </CardHeader>
           <CardFooter className="flex gap-4">
@@ -175,15 +175,15 @@ const CampaignHandler = () => {
               Introducing Our New AI Chatbot: Your Personal Assistant!
             </CardTitle>
             <CardDescription className="truncate text-ellipsis line-clamp-3 overflow-hidden">
-              Hi [Recipient's Name], We are thrilled to announce the launch of
-              our latest product, the AI Chatbot! Designed to streamline your
-              tasks and enhance productivity, our AI Chatbot is your personal
-              assistant, available 24/7. Key Features: 24/7 Availability: Never
-              miss a task with real-time assistance. Intelligent Responses:
-              Understands and responds to your queries accurately. Seamless
-              Integration: Easily integrates with your favorite tools. Don't
-              miss out on experiencing the future of personal assistance. Click
-              here to get started with our AI Chatbot today! Best regards,
+              Hi Subash, We are thrilled to announce the launch of our latest
+              product, the AI Chatbot! Designed to streamline your tasks and
+              enhance productivity, our AI Chatbot is your personal assistant,
+              available 24/7. Key Features: 24/7 Availability: Never miss a task
+              with real-time assistance. Intelligent Responses: Understands and
+              responds to your queries accurately. Seamless Integration: Easily
+              integrates with your favorite tools. Don&apos;t miss out on
+              experiencing the future of personal assistance. Click here to get
+              started with our AI Chatbot today! Best regards,
             </CardDescription>
           </CardHeader>
           <CardFooter className="flex gap-4">
@@ -205,15 +205,15 @@ const CampaignHandler = () => {
               Introducing Our New AI Chatbot: Your Personal Assistant!
             </CardTitle>
             <CardDescription className="truncate text-ellipsis line-clamp-3 overflow-hidden">
-              Hi [Recipient's Name], We are thrilled to announce the launch of
-              our latest product, the AI Chatbot! Designed to streamline your
-              tasks and enhance productivity, our AI Chatbot is your personal
-              assistant, available 24/7. Key Features: 24/7 Availability: Never
-              miss a task with real-time assistance. Intelligent Responses:
-              Understands and responds to your queries accurately. Seamless
-              Integration: Easily integrates with your favorite tools. Don't
-              miss out on experiencing the future of personal assistance. Click
-              here to get started with our AI Chatbot today! Best regards,
+              Hi Subash, We are thrilled to announce the launch of our latest
+              product, the AI Chatbot! Designed to streamline your tasks and
+              enhance productivity, our AI Chatbot is your personal assistant,
+              available 24/7. Key Features: 24/7 Availability: Never miss a task
+              with real-time assistance. Intelligent Responses: Understands and
+              responds to your queries accurately. Seamless Integration: Easily
+              integrates with your favorite tools. Don&apos;t miss out on
+              experiencing the future of personal assistance. Click here to get
+              started with our AI Chatbot today! Best regards,
             </CardDescription>
           </CardHeader>
           <CardFooter className="flex gap-4">
