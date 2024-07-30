@@ -1,7 +1,7 @@
 "use client";
 
 import { ChatbotType } from "@/actions/chatbot/types";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useCallback, useEffect, useState } from "react";
 import { createChatRoom, fetchDomainChatbot } from "@/actions/chatbot";
 import { onStartChatting } from "@/actions/bot";
 import analyseSentiment from "@/lib/analyzeSentiment";
@@ -64,10 +64,9 @@ export default function useChatBot() {
     `${process.env.NEXT_PUBLIC_WS_SERVER}`
   );
 
-  let checkConn = localStorage.getItem("isRealTime");
-
-  async function getDomainChatbot(id: string) {
+  const getDomainChatbot = useCallback(async (id: string) => {
     const res = await fetchDomainChatbot(id);
+    let checkConn = localStorage.getItem("isRealTime");
 
     if (res.status === 200) {
       setCurrBot(res.chatbot as ChatbotType);
@@ -92,7 +91,7 @@ export default function useChatBot() {
       setCurrDomain(res.domain);
     }
     setLoading(false);
-  }
+  }, []);
 
   useEffect(() => {
     window.onmessage = (e) => {
@@ -102,9 +101,10 @@ export default function useChatBot() {
         getDomainChatbot(id);
       }
     };
-  }, []);
+  }, [getDomainChatbot]);
 
   async function handleRoom() {
+    let checkConn = localStorage.getItem("isRealTime");
     if (checkConn) return;
 
     if (limitConnections === 1) return;

@@ -350,6 +350,7 @@ export default function Conversation({ domains }: ConversationProps) {
                 chatMessages.map((message) => {
                   return (
                     <div
+                      key={message.id}
                       className={`flex ${message.role === "assistant" && "justify-end"} items-start my-2 gap-2.5`}
                     >
                       <div className="flex flex-col w-full max-w-[320px] leading-1.5 p-4 border-gray-200 bg-gray-100 rounded-e-3xl rounded-es-3xl dark:bg-gray-700">
