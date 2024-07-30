@@ -14,14 +14,20 @@ Neuron is an AI-powered SaaS chatbot designed to enhance customer interaction on
 
 Here are some screenshots of Neuron in action:
 
-![Screenshot 1](https://via.placeholder.com/800x400?text=Screenshot+1)
-*Caption for Screenshot 1*
+![Screenshot 1](./apps/neuron-ai/public/screenshots/s1.png)
+_Caption for Screenshot 1_
 
-![Screenshot 2](https://via.placeholder.com/800x400?text=Screenshot+2)
-*Caption for Screenshot 2*
+![Screenshot 2](./apps/neuron-ai/public/screenshots/s2.png)
+_Caption for Screenshot 2_
 
-![Screenshot 3](https://via.placeholder.com/800x400?text=Screenshot+3)
-*Caption for Screenshot 3*
+![Screenshot 3](./apps/neuron-ai/public/screenshots/s3.png)
+_Caption for Screenshot 3_
+
+![Screenshot 4](./apps/neuron-ai/public/screenshots/s4.png)
+_Caption for Screenshot 4_
+
+![Screenshot 5](./apps/neuron-ai/public/screenshots/s5.png)
+_Caption for Screenshot 5_
 
 ## Getting Started
 
@@ -34,40 +40,42 @@ Here are some screenshots of Neuron in action:
 ### Installation
 
 1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/neuron.git
-    ```
+   ```bash
+   git clone https://github.com/yourusername/neuron.git
+   ```
 2. Navigate to the project directory:
-    ```bash
-    cd neuron
-    ```
+   ```bash
+   cd neuron
+   ```
 3. Install dependencies:
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
 ### Usage
 
 1. Start the development server:
-    ```bash
-    npm start
-    # or
-    yarn start
-    ```
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
 2. Follow the instructions in the [API documentation](https://github.com/yourusername/neuron/docs) to integrate Neuron into your website.
 
 ## Configuration
 
-Configure Neuron by editing the `config.js` file. 
+Configure Neuron by editing the `config.js` file.
 
 Example:
+
 ```js
 module.exports = {
-    apiKey: 'YOUR_API_KEY',
-    appearance: {
-        theme: 'dark',
-        position: 'bottom-right',
-    },
+  apiKey: "YOUR_API_KEY",
+  appearance: {
+    theme: "dark",
+    position: "bottom-right",
+  },
 };
+```
