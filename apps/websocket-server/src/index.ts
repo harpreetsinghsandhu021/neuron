@@ -97,7 +97,7 @@ async function messageHandler(ws: WebSocket, message: incomingMessage) {
 export async function getAllChatRooms(slug: string | null) {
   try {
     const res = await axios.get(
-      `http://localhost:3000/api/chatrooms/live?slug=${slug}`
+      `${process.env.API_URL}api/chatrooms/live?slug=${slug}`
     );
 
     return res.data;
@@ -108,7 +108,7 @@ export async function getAllChatRooms(slug: string | null) {
 
 export async function createChatMessage(payload: outgoingMessage) {
   try {
-    const res = await axios.post(`http://localhost:3000/api/chatMessage`, {
+    const res = await axios.post(`${process.env.API_URL}api/chatMessage`, {
       message: payload.payload.message,
       roomId: payload.payload.roomId,
       role: payload.payload.role,
