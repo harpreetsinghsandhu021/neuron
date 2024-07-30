@@ -44,9 +44,20 @@ async function messageHandler(ws: WebSocket, message: incomingMessage) {
 
     const res = await getAllChatRooms(tab);
 
+    console.log(res);
+
     wsServer.clients.forEach((client) =>
       client.send(JSON.stringify({ type: "REALTIME_CHATROOMS", payload: res }))
     );
+  }
+
+  if (message.type === supportedMessage.leaveRoom) {
+    const payload = message.payload;
+
+    userManager.broadCast(payload.roomId, payload.userId, {
+      type: supportedOutgoingMessage.leaveRoom,
+      payload: { message: "room closed" },
+    });
   }
 
   if (message.type === supportedMessage.joinRoom) {
@@ -86,7 +97,7 @@ async function messageHandler(ws: WebSocket, message: incomingMessage) {
 export async function getAllChatRooms(slug: string | null) {
   try {
     const res = await axios.get(
-      `${process.env.API_URL}/api/chatrooms/live?slug=${slug}`
+      `http://localhost:3000/api/chatrooms/live?slug=${slug}`
     );
 
     return res.data;
@@ -97,7 +108,7 @@ export async function getAllChatRooms(slug: string | null) {
 
 export async function createChatMessage(payload: outgoingMessage) {
   try {
-    const res = await axios.post(`${process.env.API_URL}/api/chatMessage`, {
+    const res = await axios.post(`http://localhost:3000/api/chatMessage`, {
       message: payload.payload.message,
       roomId: payload.payload.roomId,
       role: payload.payload.role,

@@ -4,6 +4,7 @@ export enum supportedMessage {
   joinRoom = "JOIN_ROOM",
   sendMessage = "SEND_MESSAGE",
   getRooms = "REALTIME_CHATROOMS",
+  leaveRoom = "LEAVE_ROOM",
 }
 
 export type incomingMessage =
@@ -12,7 +13,8 @@ export type incomingMessage =
       payload: initMessageType;
     }
   | { type: supportedMessage.sendMessage; payload: userMessageType }
-  | { type: supportedMessage.getRooms; payload: { activeTab: string } };
+  | { type: supportedMessage.getRooms; payload: { activeTab: string } }
+  | { type: supportedMessage.leaveRoom; payload: leavePayload };
 
 export const initMessage = z.object({
   name: z.string(),
@@ -26,6 +28,13 @@ export const userMessage = z.object({
   message: z.string(),
   role: z.string(),
 });
+
+export const leavePayload = z.object({
+  userId: z.string(),
+  roomId: z.string(),
+});
+
+export type leavePayload = z.infer<typeof leavePayload>;
 
 export type initMessageType = z.infer<typeof initMessage>;
 export type userMessageType = z.infer<typeof userMessage>;

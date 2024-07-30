@@ -27,7 +27,8 @@ import { useAtom } from "jotai";
 import { chatRoomAtom, store, useChatMessages, useChatRoom } from "@repo/store";
 import { Toggle } from "@/components/ui/toggle";
 import { getChatRoomMessages } from "@/actions/chatMessage";
-import { useRouter } from "next13-progressbar";
+import moment from "moment";
+import formatChatTimestamp from "@/utils/dateFormatter";
 
 interface ConversationProps {
   domains: DomainType[] | undefined;
@@ -37,6 +38,8 @@ export default function Conversation({ domains }: ConversationProps) {
   const { sendMessage, isConnected, error, data } = useWebsocket(
     `${process.env.NEXT_PUBLIC_WS_SERVER}`
   );
+  const messageWindowRef = useRef<HTMLDivElement | null>(null);
+
   const [mainTab, setMainTab] = useState<string>("unread");
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const [realTime, setRealTime] = useState(false);
@@ -47,6 +50,7 @@ export default function Conversation({ domains }: ConversationProps) {
   const { isSignedIn, user, isLoaded } = useUser();
 
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const parentRef = useRef<HTMLInputElement | null>(null);
 
   const { chatRooms, setChatRooms } = useChatRoom();
   const { chatMessages, setChatMessages } = useChatMessages();
@@ -75,6 +79,7 @@ export default function Conversation({ domains }: ConversationProps) {
     }
     if (data.type === "ADD_CHAT") {
       setChatMessages([...chatMessages, data.payload]);
+      onScrollToBottom();
     }
   }, [data]);
 
@@ -112,6 +117,15 @@ export default function Conversation({ domains }: ConversationProps) {
     setChatRooms([]);
     setActiveChatroom(null);
   }
+
+  const onScrollToBottom = () => {
+    if (messageWindowRef.current) {
+      messageWindowRef.current.scrollTo({
+        top: messageWindowRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <section className="flex my-4 items-start gap-4">
@@ -152,8 +166,7 @@ export default function Conversation({ domains }: ConversationProps) {
             unstyled
             className="max-w-md divide-y h-[30rem] no-visible-scrollbar overflow-scroll  my-2 divide-gray-200 dark:divide-gray-700"
           >
-            {!isLoadingMessages &&
-              chatRooms &&
+            {chatRooms &&
               chatRooms.map((room: chatRoomType) => {
                 return (
                   <List.Item
@@ -169,6 +182,11 @@ export default function Conversation({ domains }: ConversationProps) {
                         console.log(fetchMessages);
 
                         setChatMessages(fetchMessages.messages as any[]);
+
+                        setTimeout(() => {
+                          onScrollToBottom();
+                          console.log("runing");
+                        }, 300);
                       }
                       setIsLoadingMessages(false);
 
@@ -307,6 +325,14 @@ export default function Conversation({ domains }: ConversationProps) {
                       (room) => room.id !== activeChatRoom?.id
                     );
 
+                    sendMessage({
+                      type: "LEAVE_ROOM",
+                      payload: {
+                        roomId: activeChatRoom?.id,
+                        userId: user?.id,
+                      },
+                    });
+
                     setChatRooms(liveFilteredChatRooms);
                     setActiveChatroom(null);
                     setChatMessages([]);
@@ -315,41 +341,109 @@ export default function Conversation({ domains }: ConversationProps) {
               />
             )}
           </div>
-          <div className="h-full">
-            <div className="h-[80%] overflow-scroll no-visible-scrollbar px-4">
+          <div className="dark:bg-gray-800 h-full">
+            <div
+              ref={messageWindowRef}
+              className={`${mainTab !== "unread" ? "h-[90%]" : "h-[80%] "} overflow-scroll no-visible-scrollbar px-4`}
+            >
               {!isLoadingMessages &&
                 chatMessages.map((message) => {
-                  console.log(message);
-
                   return (
                     <div
-                      key={message.id}
-                      className={`my-2 ${message.role === "assistant" && "ml-auto"} dark:bg-gray-900 bg-gray-300 p-2.5 rounded-xl max-w-max `}
+                      className={`flex ${message.role === "assistant" && "justify-end"} items-start my-2 gap-2.5`}
                     >
-                      <span className="text-sm ">{message.message}</span>
+                      <div className="flex flex-col w-full max-w-[320px] leading-1.5 p-4 border-gray-200 bg-gray-100 rounded-e-3xl rounded-es-3xl dark:bg-gray-700">
+                        <div className="flex items-center space-x-2 rtl:space-x-reverse">
+                          <span className="text-sm capitalize font-semibold text-gray-900 dark:text-white">
+                            {message.role}
+                          </span>
+                          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                            {formatChatTimestamp(message.createdAt)}
+                          </span>
+                        </div>
+                        <p className="text-sm font-normal py-2.5 text-gray-900 dark:text-white">
+                          {message.message}
+                        </p>
+                        {/* <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                          Delivered
+                        </span> */}
+                      </div>
+
+                      <div
+                        id="dropdownDots"
+                        className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-40 dark:bg-gray-700 dark:divide-gray-600"
+                      >
+                        <ul
+                          className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                          aria-labelledby="dropdownMenuIconButton"
+                        >
+                          <li>
+                            <a
+                              href="#"
+                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Reply
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="#"
+                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Forward
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="#"
+                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Copy
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="#"
+                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Report
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="#"
+                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Delete
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   );
                 })}
             </div>
           </div>
-          <form
-            onSubmit={submitHandler}
-            className="absolute  p-2 bottom-0 w-[100%] gap-2 flex items-center left-1/2 -translate-x-1/2"
-          >
-            <div className="flex-1 flex ">
-              <TextInput
-                type="text"
-                ref={inputRef}
-                className="flex-1 outline-none border-none"
-                placeholder="Type Your Message...."
-                required
-              />
-              <RiAttachment2 className="w-6 h-6 scale-[2] flex-[0.02] -translate-x-10 translate-y-2" />
-            </div>
-            <Button type="submit" outline>
-              <HiOutlineArrowRight className="h-5 w-5" />
-            </Button>
-          </form>
+          {mainTab === "unread" && (
+            <form
+              onSubmit={submitHandler}
+              className="absolute  p-2 bottom-0 w-[100%] gap-2 flex items-center left-1/2 -translate-x-1/2"
+            >
+              <div className="flex-1 flex ">
+                <TextInput
+                  type="text"
+                  ref={inputRef}
+                  className="flex-1 outline-none border-none"
+                  placeholder="Type Your Message...."
+                  required
+                />
+                <RiAttachment2 className="w-6 h-6 scale-[2] flex-[0.02] -translate-x-10 translate-y-2" />
+              </div>
+              <Button type="submit" outline>
+                <HiOutlineArrowRight className="h-5 w-5" />
+              </Button>
+            </form>
+          )}
         </div>
       </div>
     </section>

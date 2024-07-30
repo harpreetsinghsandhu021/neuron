@@ -64,16 +64,28 @@ export default function useChatBot() {
     `${process.env.NEXT_PUBLIC_WS_SERVER}`
   );
 
+  let checkConn = localStorage.getItem("isRealTime");
+
   async function getDomainChatbot(id: string) {
     const res = await fetchDomainChatbot(id);
 
     if (res.status === 200) {
       setCurrBot(res.chatbot as ChatbotType);
 
-      setChat((prevChat) => [
-        ...prevChat,
-        { content: res.chatbot?.welcomeMessage, role: "AI" } as message,
-      ]);
+      if (!checkConn) {
+        setChat((prevChat) => [
+          ...prevChat,
+          { content: res.chatbot?.welcomeMessage, role: "AI" } as message,
+        ]);
+      } else {
+        setChat((prevChat) => [
+          {
+            content:
+              "'Welcome back! You are still connected to the customer executive. How can we continue to assist you?'",
+            role: "AI",
+          } as message,
+        ]);
+      }
 
       setHelpDesk(res.helpDeskQuestions);
 
@@ -93,7 +105,8 @@ export default function useChatBot() {
   }, []);
 
   async function handleRoom() {
-    // if (isRealTime) return;
+    if (checkConn) return;
+
     if (limitConnections === 1) return;
 
     const res = await createChatRoom(domain?.id as number);
@@ -162,18 +175,28 @@ export default function useChatBot() {
 
   useEffect(() => {
     if (data === null) return;
+    console.log(data);
 
     if (data.type === "ADD_CHAT") {
-      console.log(data);
-
-      // setChat([
-      //   ...chat,
-      //   { role: data.payload.name, content: data.payload.message },
-      // ]);
-
       setChat((prevChat) => [
         ...prevChat,
         { role: data.payload.name, content: data.payload.message },
+      ]);
+    }
+
+    if (data.type === "LEAVE_ROOM") {
+      localStorage.removeItem("isRealTime");
+      localStorage.removeItem("userId");
+      localStorage.removeItem("chatRoom");
+      setIsRealTime(false);
+
+      setChat((prevChat) => [
+        ...prevChat,
+        {
+          content:
+            "Thank you for chatting with us. If you have any more questions, feel free to start a new chat.",
+          role: "AI",
+        } as message,
       ]);
     }
   }, [data]);
@@ -242,8 +265,20 @@ export default function useChatBot() {
       );
 
       if (response?.status === 200) {
-        if (response.response.includes("end of the conversation")) {
+        if (response.response.includes("realtime")) {
           setIsRealTime(true);
+
+          setChat((prevChat) => [
+            ...prevChat,
+            {
+              content:
+                "Realtime chat started. Connecting to a customer executive...",
+              role: "AI",
+            } as message,
+          ]);
+
+          setResponseLoading(false);
+          return;
         }
 
         setTimeout(() => {

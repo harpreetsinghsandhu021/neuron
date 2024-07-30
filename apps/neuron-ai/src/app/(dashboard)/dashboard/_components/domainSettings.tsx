@@ -61,7 +61,7 @@ const DomainSettings = ({
           </div>
           <div>
             <CardTitle>Code Snippet</CardTitle>{" "}
-            <p className="text-sm text-gray-400 text-muted-foreground ">
+            <p className="text-sm mt-2 text-gray-400 text-muted-foreground ">
               Copy and paste this code snippet into the header tag of your
               website
             </p>

@@ -52,6 +52,10 @@ export class UserManager {
     return user ?? null;
   }
 
+  updateRooms(roomId: string) {
+    return this.rooms.delete(roomId);
+  }
+
   broadCast(roomId: string, userId: string, message: outgoingMessage) {
     const user = this.getUser(roomId, userId);
 
@@ -68,6 +72,8 @@ export class UserManager {
     }
 
     room.users.forEach((user) => {
+      console.log(user);
+
       // if (user.id === userId) {
       //   return;
       // }
