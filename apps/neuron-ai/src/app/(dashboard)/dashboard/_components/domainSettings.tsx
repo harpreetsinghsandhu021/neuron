@@ -107,7 +107,7 @@ function CodeBlock({ id }: { id: number | undefined }) {
           right: 50px;
           border: none;
           height:100vh;
-          width:440px;
+          width:540px;
         }
     \`)
     

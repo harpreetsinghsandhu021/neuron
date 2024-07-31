@@ -37,7 +37,7 @@ export default function Home() {
         />
       )}
       <div
-        className={`rounded-full cursor-pointer z-50 w-20 fixed bottom-10 right-10 h-20 flex items-center justify-center ${currBot?.background ? currBot.background : "bg-blue-200"} `}
+        className={`rounded-full cursor-pointer z-50 w-12 h-12 fixed bottom-10 right-10  flex items-center justify-center ${currBot?.background ? currBot.background : "bg-black"} `}
         onClick={onOpenChatBot}
       >
         {currBot?.icon ? (
@@ -56,11 +56,11 @@ const BotIcon = () => {
       alt=""
       quality={10}
       priority
-      width={60}
-      height={60}
+      width={20}
+      height={20}
       sizes=""
-      className=" rounded-full"
-      src={"/chatboticon.png"}
+      className=""
+      src={"/logo.svg"}
     />
   );
 };

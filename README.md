@@ -23,8 +23,9 @@ _Paste the code snippet into your project_
 ![Screenshot 3](./apps/neuron-ai/public/screenshots/s3.png)
 _stripe integration_
 
-![Screenshot 4](./apps/neuron-ai/public/screenshots/s4.png)
 _chatbot design_
+![Screenshot 4](./apps/neuron-ai/public/screenshots/s7.png)
+![Screenshot 4](./apps/neuron-ai/public/screenshots/s8.png)
 
 ![Screenshot 5](./apps/neuron-ai/public/screenshots/s6.png)
 _chat with your visitors in realtime_
