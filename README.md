@@ -26,16 +26,16 @@ _stripe integration_
 ![Screenshot 4](./apps/neuron-ai/public/screenshots/s4.png)
 _chatbot design_
 
-![Screenshot 5](./apps/neuron-ai/public/screenshots/s5.png)
+![Screenshot 5](./apps/neuron-ai/public/screenshots/s6.png)
 _chat with your visitors in realtime_
 
 ## Working on
 
-- **Campaign Creation
-- **Easy Appointment Scheduling
-- **Subscriptions
-- **Multi-Language Support
-- **Customizable Chatbot Personalities
-- **Integrations with CRM Tools
-- **AI-Powered Recommendations
-- **Analytics and Reporting Dashboard
+- \*\*Campaign Creation
+- \*\*Easy Appointment Scheduling
+- \*\*Subscriptions
+- \*\*Multi-Language Support
+- \*\*Customizable Chatbot Personalities
+- \*\*Integrations with CRM Tools
+- \*\*AI-Powered Recommendations
+- \*\*Analytics and Reporting Dashboard
