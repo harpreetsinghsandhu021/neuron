@@ -15,7 +15,7 @@ Neuron is an AI-powered SaaS chatbot designed to enhance customer interaction on
 Here are some screenshots of Neuron in action:
 
 ![Screenshot 1](./apps/neuron-ai/public/screenshots/s1.png)
-_Caption for Screenshot 1_
+_dashboard_
 
 ![Screenshot 2](./apps/neuron-ai/public/screenshots/s2.png)
 _Paste the code snippet into your project_
@@ -24,8 +24,9 @@ _Paste the code snippet into your project_
 _stripe integration_
 
 _chatbot design_
-![Screenshot 4](./apps/neuron-ai/public/screenshots/s7.png)
-![Screenshot 4](./apps/neuron-ai/public/screenshots/s8.png)
+<img src="./apps/neuron-ai/public/screenshots/s7.png" width="400" height="600">
+<img src="./apps/neuron-ai/public/screenshots/s8.png" width="400" height="600">
+
 
 ![Screenshot 5](./apps/neuron-ai/public/screenshots/s6.png)
 _chat with your visitors in realtime_
