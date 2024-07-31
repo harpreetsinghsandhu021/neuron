@@ -54,7 +54,7 @@ const BotWindow = ({
   }, [chat]);
 
   return (
-    <div className="h-[38rem] w-[28rem] mb-32 mr-10 bg-white border relative flex flex-col rounded-xl overflow-hidden  ">
+    <div className="h-[38rem] w-[28rem] mb-24 mr-10 bg-white border relative flex flex-col rounded-xl overflow-hidden">
       <div className=" border-b p-4 bg-black text-white border-b-white">
         <div className="flex gap-2">
           <div className="bg-white w-12 flex items-center justify-center rounded-full h-12">
