@@ -52,22 +52,22 @@ const BotWindow = ({
   }, [chat]);
 
   return (
-    <div className="h-[36rem] w-[28rem] border-4 border-black py-4 px-4 mb-32 mr-10 bg-blue-200 relative flex flex-col rounded-xl p-2  ">
-      <div className=" border-b pb-2 border-b-white">
+    <div className="h-[38rem] w-[28rem] mb-32 mr-10 bg-white border relative flex flex-col rounded-xl overflow-hidden  ">
+      <div className=" border-b p-4 bg-black text-white border-b-white">
         <div className="flex gap-2">
           <div className="bg-white w-12 flex items-center justify-center rounded-full h-12">
-            <BsStars className="w-6 h-6" />
+            <BsStars className="w-6 fill-black h-6" />
           </div>
           <div>
             <h4 className="text-2xl capitalize whitespace-nowrap font-[500]">
               Sales Rep - <span className="text-xl"> {domain?.name} </span>
             </h4>
-            <h6 className="capitalize">{domain?.name}</h6>
+            <h6 className="capitalize flex">{domain?.name} </h6>
           </div>
         </div>
       </div>
       <Tabs defaultValue="chat" className="">
-        <TabsList className="grid w-full grid-cols-2">
+        <TabsList className="grid w-full text-black bg-gray-200 rounded-none grid-cols-2">
           <TabsTrigger
             onClick={() => {
               setShowTextAnimation(chat.length + 1);
@@ -79,7 +79,7 @@ const BotWindow = ({
             Chat
           </TabsTrigger>
           {currBot?.helpDesk && (
-            <TabsTrigger className="rounded-lg" value="helpDesk">
+            <TabsTrigger className="rounded-lg " value="helpDesk">
               Help Desk
             </TabsTrigger>
           )}
@@ -87,7 +87,7 @@ const BotWindow = ({
         <TabsContent className="m-0" value="chat">
           <div
             ref={messageWindowRef}
-            className="pr-4 no-visible-scrollbar h-[23.5rem] overflow-scroll"
+            className=" px-4 no-visible-scrollbar h-[25.5rem] overflow-scroll"
           >
             {chat.map((message, index) => {
               return (
@@ -118,23 +118,6 @@ const BotWindow = ({
                 </div>
               );
             })}
-            {/* {true && (
-              <div className="flex gap-3">
-                <span
-                  className={`relative flex  shrink-0 overflow-hidden rounded-full w-8 h-8`}
-                >
-                  <div className="rounded-full bg-gray-100 border p-1">
-                    <IconAi />
-                  </div>
-                </span>
-                <div className="leading-relaxed w-full">
-                  <span className="block font-bold text-gray-700"> AI</span>
-                  <span className="text-sm text-gray-700">
-                    "Connecting you to a live agent..."{" "}
-                  </span>
-                </div>
-              </div>
-            )} */}
 
             {responseLoading && (
               <div className="flex gap-3">
@@ -152,7 +135,7 @@ const BotWindow = ({
               </div>
             )}
           </div>
-          <div className="flex items-center mt-auto pt-0">
+          <div className="px-4 flex items-center mt-auto pt-0">
             <form
               onSubmit={onSubmit}
               className="flex items-center h-10 justify-center w-full space-x-2"
@@ -173,7 +156,7 @@ const BotWindow = ({
           </div>
         </TabsContent>
         <TabsContent value="helpDesk" className="m-0">
-          <div className="pr-4 no-visible-scrollbar h-[23.5rem] overflow-scroll">
+          <div className="px-4 no-visible-scrollbar h-[23.5rem] overflow-scroll">
             {helpDesk?.map((h, index) => (
               <FAQ
                 key={index}
@@ -202,9 +185,9 @@ const BotWindow = ({
 function Loader() {
   return (
     <div className="w-full mt-1 animate-pulse">
-      <div className="h-2.5 bg-white rounded-full dark:bg-gray-700 w-full mb-4"></div>
-      <div className="h-2.5 bg-white rounded-full dark:bg-gray-700 w-full mb-4"></div>
-      <div className="h-2.5 bg-white rounded-full dark:bg-gray-700 w-24 mb-4"></div>
+      <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full mb-4"></div>
+      <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full mb-4"></div>
+      <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-24 mb-4"></div>
     </div>
   );
 }
