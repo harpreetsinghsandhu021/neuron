@@ -18,7 +18,7 @@ export default function Home() {
   } = useChatBot();
 
   if (loading) {
-    return <div>Loading...</div>;
+    return null;
   }
 
   return (

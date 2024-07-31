@@ -1,9 +1,10 @@
-import { updateGreetingMessage } from "@/actions/chatbot";
+import { toggleHelpDesk, updateGreetingMessage } from "@/actions/chatbot";
 import { CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "flowbite-react";
+import { Textarea, ToggleSwitch } from "flowbite-react";
 import Image from "next/image";
+import { useRouter } from "next13-progressbar";
 import React, { ChangeEvent } from "react";
 import { toast } from "sonner";
 import { useDebounce, useDebouncedCallback } from "use-debounce";
@@ -12,16 +13,17 @@ const ChatbotSettings = ({
   icon,
   greetingMessage,
   id,
+  helpdesk,
 }: {
   icon: string | undefined | null;
   greetingMessage: string | undefined | null;
   id: number | undefined;
+  helpdesk: boolean | undefined;
 }) => {
+  const router = useRouter();
   const handleUpdateGreetingMessage = useDebouncedCallback(
     async (e: ChangeEvent<HTMLTextAreaElement>) => {
       const res = await updateGreetingMessage(e.target.value, id as number);
-
-      console.log(res);
 
       if (res.status === 204) {
         toast.success("Greeting Message updated");
@@ -48,6 +50,7 @@ const ChatbotSettings = ({
             />
           </div>
         </div>
+
         <div className="items-center mt-4 pr-20">
           <CardTitle className="text-xl capitalize">Greeting message</CardTitle>
           <p>Customize your welcome message</p>
@@ -58,14 +61,33 @@ const ChatbotSettings = ({
             rows={2}
           />
         </div>
+        <div className="items-center mt-4 pr-20 inline-flex gap-4 ">
+          <CardTitle className="text-xl capitalize ">Toggle Helpdesk</CardTitle>
+
+          <ToggleSwitch
+            checked={helpdesk as boolean}
+            className="mt-2"
+            onChange={async (e) => {
+              const res = await toggleHelpDesk(e, id as number);
+              if (res.status === 204) {
+                if (e === true) {
+                  toast.success("helpdesk section is live now");
+                } else {
+                  toast.success("helpdesk section removed");
+                }
+                router.refresh();
+              }
+            }}
+          />
+        </div>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 ">
         <Image
-          src="/images/bot-ui.png"
+          src="/screenshots/s9.png"
           alt="chaticon"
-          className="w-[30rem] h-auto"
-          width={600}
-          height={500}
+          className="w-[24rem] h-auto mx-auto rounded-xl"
+          width={200}
+          height={200}
         />
       </div>
     </div>
