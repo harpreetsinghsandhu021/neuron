@@ -9,8 +9,8 @@ import {
 
 export default function FooterComponent() {
   return (
-    <Footer className="bg-black-600" container>
-      <div className="w-full text-center">
+    <footer className="bg-black w-full p-4">
+      <div className="w-full max-w-screen-xl mx-auto text-center">
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
           <FooterBrand
             href="https://flowbite.com"
@@ -28,6 +28,6 @@ export default function FooterComponent() {
         <FooterDivider />
         <FooterCopyright href="#" by="Neuron™" year={2022} />
       </div>
-    </Footer>
+    </footer>
   );
 }

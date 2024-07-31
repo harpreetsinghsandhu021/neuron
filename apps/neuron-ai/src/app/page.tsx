@@ -171,7 +171,7 @@ const MyComponent: React.FC = () => {
       </header>
 
       <main>
-        <section className="flex ">
+        <section className="flex max-w-screen-xl mx-auto ">
           <div className="mt-2 flex-1 font-semibold text-left text-white max-md:max-w-screen-xl ">
             <h1 className="text-6xl leading-[70px] mx-auto font-normal text-neutral-600 dark:text-neutral-400">
               Build
@@ -194,18 +194,18 @@ const MyComponent: React.FC = () => {
           </div>
           <div className="flex-[1.1]">
             <Image
-              src={"/images/app-ui.png"}
+              src={"/screenshots/s2.png"}
               alt=""
-              className="-translate-y-5 rounded-sm translate-x-40"
+              className="h-auto w-auto scale-110 rounded-sm translate-x-40"
               width={2400}
               height={2400}
             />
             <Image
-              src={"/images/bot-ui.png"}
+              src={"/screenshots/s9.png"}
               alt=""
-              className="absolute -translate-y-80 "
-              width={330}
-              height={300}
+              className="absolute -translate-y-48 -translate-x-8 rounded-xl "
+              width={280}
+              height={0}
             />
           </div>
         </section>
