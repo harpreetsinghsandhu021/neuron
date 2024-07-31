@@ -24,8 +24,8 @@ _Paste the code snippet into your project_
 _stripe integration_
 
 _chatbot design_
-<img src="./apps/neuron-ai/public/screenshots/s7.png" width="400" height="600">
-<img src="./apps/neuron-ai/public/screenshots/s8.png" width="400" height="600">
+<img src="./apps/neuron-ai/public/screenshots/s7.png" width="300" height="440">
+<img src="./apps/neuron-ai/public/screenshots/s8.png" width="300" height="440">
 
 
 ![Screenshot 5](./apps/neuron-ai/public/screenshots/s6.png)
