@@ -245,7 +245,9 @@ function FAQ({ question, answer }: { question: string; answer: string }) {
   return (
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1">
-        <AccordionTrigger className="capitalize">{question}</AccordionTrigger>
+        <AccordionTrigger className="capitalize text-left">
+          {question}
+        </AccordionTrigger>
         <AccordionContent>{answer}</AccordionContent>
       </AccordionItem>
     </Accordion>

@@ -61,17 +61,49 @@ const DomainSettings = ({
           </div>
           <div>
             <CardTitle>Code Snippet</CardTitle>{" "}
-            <p className="text-sm mt-2 text-gray-400 text-muted-foreground ">
-              Copy and paste this code snippet into the header tag of your
-              website
-            </p>
-            <CodeBlock id={domain?.id} />
+            <Tabs defaultValue="html" className="flex-[0.6] mt-2">
+              <TabsList className="max-w-2xl grid w-full grid-cols-3">
+                <TabsTrigger value="html">HTML</TabsTrigger>
+                <TabsTrigger value="react">React</TabsTrigger>
+                <TabsTrigger value="next">Next</TabsTrigger>
+              </TabsList>
+              <TabsContent value="html">
+                <p className="text-sm capitalize my-2 text-gray-400 text-muted-foreground ">
+                  Copy and paste this code snippet into the header tag of your
+                  website
+                </p>
+                <CodeBlock id={domain?.id} />
+              </TabsContent>
+              <TabsContent value="react">
+                <p className="text-sm my-2 capitalize text-gray-400 text-muted-foreground ">
+                  create a file in src/components/chatFrame.tsx and paste the
+                  following code
+                </p>
+                <ReactCodeBlock id={domain?.id} />
+                <p className="text-sm my-2 capitalize text-gray-400 text-muted-foreground ">
+                  import chatComponent in layout.tsx
+                </p>
+                <LayoutCodeBlock />
+              </TabsContent>
+              <TabsContent value="next">
+                <p className="text-sm my-2 capitalize text-gray-400 text-muted-foreground ">
+                  create a file in src/components/chatFrame.tsx and paste the
+                  following code
+                </p>
+                <ReactCodeBlock id={domain?.id} />
+                <p className="text-sm my-2 capitalize text-gray-400 text-muted-foreground ">
+                  import chatComponent in layout.tsx
+                </p>
+                <LayoutCodeBlock />
+              </TabsContent>
+            </Tabs>
           </div>
         </TabsContent>
         <TabsContent value="chatbot-settings">
           <ChatbotSettings
             icon={chatbot?.icon}
             id={chatbot?.id}
+            helpdesk={chatbot?.helpDesk}
             greetingMessage={chatbot?.welcomeMessage}
           />
         </TabsContent>
@@ -134,7 +166,133 @@ function CodeBlock({ id }: { id: number | undefined }) {
     })
         `;
   return (
-    <div className="grid w-[45rem] relative bg-gray-100 dark:bg-gray-800 rounded-xl mt-4">
+    <div className="grid w-[45rem] relative bg-gray-100 dark:bg-gray-800 rounded-xl">
+      <Copy
+        className="absolute top-5 right-5 text-gray-400 cursor-pointer"
+        onClick={() => {
+          navigator.clipboard.writeText(snippet);
+          toast("Copied to clipboard", {
+            description: "You can now paste the code inside your website",
+          });
+        }}
+      />
+      <pre className="w-full overflow-scroll">
+        <code className="text-gray-500 dark:text-gray-400">{snippet}</code>
+      </pre>
+    </div>
+  );
+}
+
+function ReactCodeBlock({ id }: { id: number | undefined }) {
+  let snippet = `
+  "use client";
+  import { useRef, useEffect } from "react";
+  
+  interface Dimensions {
+    width: number;
+    height: number;
+  }
+  
+  const ChatFrame = () => {
+    const iframeRef = useRef<HTMLIFrameElement>(null);
+  
+    useEffect(() => {
+      const iframe = iframeRef.current;
+      if (!iframe) return;
+  
+      const iframeStyles = (styleString: string) => {
+        const style = document.createElement("style");
+        style.textContent = styleString;
+        document.head.appendChild(style);
+      };
+  
+      iframeStyles(\`
+        .chat-frame {
+          position: fixed;
+          right:0;
+          bottom:0;
+          border: none;
+          height: 95vh;
+          width:540px;
+          z-index:99;
+          pointer-events:all;
+        }
+      \`);
+  
+      iframe.src = "${process.env.NEXT_PUBLIC_CHATBOT_URL}"; 
+      iframe.classList.add("chat-frame");
+  
+      iframe.onload = () => {
+        setTimeout(() => {
+          try {
+            iframe.contentWindow?.postMessage(${id}, "${process.env.NEXT_PUBLIC_CHATBOT_URL}"); 
+          } catch (err) {
+            console.error("Error sending postMessage:", err);
+          }
+        }, 100);
+      };
+
+  
+      window.addEventListener("message", handleMessage);
+  
+      return () => {
+        window.removeEventListener("message", handleMessage);
+      };
+    }, []);
+  
+    return (
+      <iframe
+        ref={iframeRef}
+        src=""
+        style={{ colorScheme: "normal" }}
+        className="chat-frame"
+      ></iframe>
+    );
+  };
+  
+  export default ChatFrame;
+  
+        `;
+  return (
+    <div className="grid w-[45rem] relative bg-gray-100 dark:bg-gray-800 rounded-xl ">
+      <Copy
+        className="absolute top-5 right-5 text-gray-400 cursor-pointer"
+        onClick={() => {
+          navigator.clipboard.writeText(snippet);
+          toast("Copied to clipboard", {
+            description: "You can now paste the code inside your website",
+          });
+        }}
+      />
+      <pre className="w-full overflow-scroll">
+        <code className="text-gray-500 dark:text-gray-400">{snippet}</code>
+      </pre>
+    </div>
+  );
+}
+
+function LayoutCodeBlock() {
+  let snippet = `
+  import ChatFrame from "./_components/chatFrame";
+  import { Footer } from "./_components/footer";
+  import { Navbar } from "./_components/navbar";
+  
+  const Layout = ({ children }: { children: React.ReactNode }) => {
+    return (
+      <div className="dark:bg-[#1F1F1F]">
+        <Navbar />
+        <ChatFrame />
+        <main className="pt-40">{children}</main>
+        <Footer />
+      </div>
+    );
+  };
+  
+  export default Layout;
+  
+        `;
+  return (
+    <div className="grid w-[45rem] relative bg-gray-100 dark:bg-gray-800 rounded-xl">
       <Copy
         className="absolute top-5 right-5 text-gray-400 cursor-pointer"
         onClick={() => {
