@@ -2,6 +2,9 @@
 
 Neuron is an AI-powered SaaS chatbot designed to enhance customer interaction on your website. With sentiment analysis and customization features, Neuron provides an intelligent and personalized communication experience for your users.
 
+Check the Demo here - https://vimeo.com/993312771?share=copy
+
+
 ## Features
 
 - **AI-Powered Conversations**: Leverage advanced AI to provide accurate and helpful responses to user queries.
