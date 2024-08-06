@@ -40,13 +40,15 @@ const ChatbotSettings = ({
         <div className="flex items-start gap-4">
           <Input id="picture" className="w-full mt-4 p-0 " type="file" />
 
-          <div className="min-w-16 min-h-16 rounded-full p-1 flex items-center justify-center bg-blue-200  ">
+          <div className="min-w-16 min-h-16 rounded-full p-1 flex items-center justify-center bg-black  ">
             <Image
-              src="/icons/chatboticon.png"
+              src="/images/logo.svg"
               alt="chaticon"
-              className="w-16 h-auto"
-              width={100}
-              height={100}
+              className="w-8 h-auto"
+              quality={10}
+              priority
+              width={20}
+              height={20}
             />
           </div>
         </div>
